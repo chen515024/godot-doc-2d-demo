@@ -12,13 +12,13 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	var velocity = Vector2.ZERO;
-	if Input.is_action_just_pressed("move_right"):
+	if Input.is_action_pressed("move_right"):
 		velocity.x += 1;
-	if Input.is_action_just_pressed("move_left"):
+	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1;
-	if Input.is_action_just_pressed("move_up"):
+	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1;
-	if Input.is_action_just_pressed("move_down"):
+	if Input.is_action_pressed("move_down"):
 		velocity.y += 1;
 		
 	if velocity.length() > 0:
@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	hide();
 	hit.emit();
 	$CollisionShape2D.set_deferred("disabled", true);
